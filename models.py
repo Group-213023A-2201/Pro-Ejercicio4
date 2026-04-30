@@ -39,6 +39,7 @@ class Service:
     # Obtiene el ID del servicio.
     def calculate_cost(self) -> float:
         return 0.0
+    
     # Describe el servicio.
     def describe_service(self) -> str:
         return "Generic Service Description"
@@ -51,34 +52,50 @@ class RoomRental(Service):
          self._hours = hours
          self._rate_per_hour = rate_per_hour
          
+    # Calcula el costo del servicio de alquiler de sala.
     def calculate_cost(self) -> float:
-        return self._hours * self._rate_per_hour        
+        return self._hours * self._rate_per_hour
 
+    # Describe el servicio de alquiler de sala.
     def describe_service(self) -> str:
         return f"Room Rental for {self._client_name} - {self._hours} hours."
     
+# Inicializamos la clase EquipmentRental, la cual hereda de Service.
 class EquipmentRental(Service):
+    # Definimos lo que usaremos.
     def __init__(self, service_id: str, client_name: str, days: int, daily_rate: float):
             super().__init__(service_id, client_name)
             self._days = days
             self._daily_rate = daily_rate
+            
+    # Calcula el costo del servicio de alquiler de equipo.
     def calculate_cost(self) -> float:
             return self._days * self._daily_rate
+        
+    # Describe el servicio de alquiler de equipo.
     def describe_service(self) -> str:
             return f"Equipment Rental for {self._client_name} - {self._days} days."
 
+# Inicializamos la clase Consulting, la cual hereda de Service.
 class Consulting(Service):
     def __init__(self, service_id: str, client_name: str, sessions: int, fee_per_session: float):
         super().__init__(service_id, client_name)
         self._sessions = sessions
         self._fee_per_session = fee_per_session
-    
+        
+    # Calcula el costo del servicio de consultoría, aplicando un descuento opcional.
     def calculate_cost(self, discount_percentage: float = 0.0) -> float:
         base_cost = self._sessions * self._fee_per_session
         deduction = base_cost * (discount_percentage / 100)
         return base_cost - deduction
-       
+    
+    # Describe el servicio de consultoría.  
     def describe_service(self) -> str:
             return f"Consulting for {self._client_name} - {self._sessions} sessions."
+        
+        # Falta colocar la clase RESERVA.
+        
+class Reservation:
+    
 
    
