@@ -94,8 +94,7 @@ class Consulting(Service):
             return f"Consulting for {self._client_name} - {self._sessions} sessions."
         
 # Creamos la clase Reserva.
-class Reservation:
-    
+class Reservation:    
     # Usamos el constructor de la clase, el cual recibe los parámetros reservation_id, client, service y duration. Además, se establece un estado inicial de "Pending".
     def __init__(self, reservation_id: str, client: Client, service: Service, duration: int):
         self._reservation_id = reservation_id
